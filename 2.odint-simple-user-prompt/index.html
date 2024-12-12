@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple User Prompt</title>
+  </head>
+  <body>
+    <h1>Hello, Visitor! 🌴</h1>
+
+    <script>
+      // Data
+      const userName = prompt("What is you name, visitor?");
+      const userAge = prompt("What is your age, visitor?");
+      const legalAgeForDrinking = 18;
+      const thresHoldAgeForNotDrinking = 65;
+
+      // Display message
+      // Check if the user can drink or not based on the age
+      function checkAgeForStatus(age) {
+        if (age < legalAgeForDrinking || age > thresHoldAgeForNotDrinking) {
+          return `Prohibited to Drink`;
+        }
+
+        if (age > legalAgeForDrinking && age < thresHoldAgeForNotDrinking) {
+          return `Allowed to Drink`;
+        }
+      }
+
+      // Display Info of user
+      // Show the personal details of the user
+      function displayVisitorInfo(name, age) {
+        console.log(`
+            Name: ${name}
+            Age: ${age}
+            Status: ${checkAgeForStatus(age)}
+        `);
+      }
+
+      // Display Reminder
+      // Show a reminder based on the age of the user
+      function displayReminder(age) {
+        if (age > legalAgeForDrinking && age < thresHoldAgeForNotDrinking) {
+          console.log(
+            `${userName.toLocaleUpperCase()}, you are allowed for alcohol beverages!`
+          );
+        }
+
+        if (age < legalAgeForDrinking || age > thresHoldAgeForNotDrinking) {
+          console.log(
+            `${userName.toLocaleUpperCase()}, please be reminded that either you are a minor or a senior citizen who are prohibited to drink alcohol beverages!`
+          );
+        }
+      }
+
+      // Decide
+      // Check if the user give his/her name and age
+      if (!userName && !userAge) {
+        alert("Visitor, please fill up the form!");
+      } else {
+        // Display some prompt
+        // Show the necessary information about the user
+        displayReminder(userAge);
+        displayVisitorInfo(userName, userAge);
+      }
+    </script>
+  </body>
+</html>
